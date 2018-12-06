@@ -6,6 +6,14 @@ defmodule AdventOfCode2018.Day01 do
     |> Enum.sum()
   end
 
-  def part2(_args) do
+  def part2(args) do
+    args
+    |> String.split()
+    |> Stream.cycle()
+    |> Stream.map(&String.to_integer/1)
+    |> Stream.scan(&(&1 + &2))
+    |> Enum.reduce_while(MapSet.new([0]), fn x, acc ->
+         if !MapSet.member?(acc, x), do: {:cont, MapSet.put(acc, x)}, else: {:halt, x}
+       end)
   end
 end
