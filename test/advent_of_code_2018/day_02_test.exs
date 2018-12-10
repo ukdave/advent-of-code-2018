@@ -20,9 +20,17 @@ defmodule AdventOfCode2018.Day02Test do
 
   @tag :skip
   test "part2" do
-    input = nil
+    input = """
+    abcde
+    fghij
+    klmno
+    pqrst
+    fguij
+    axcye
+    wvxyz
+    """
     result = part2(input)
 
-    assert result
+    assert result == "fgij"
   end
 end
